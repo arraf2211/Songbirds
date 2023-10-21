@@ -14,9 +14,15 @@ import {
 } from "@/components/ui/navigation-menu"
 
 import { NavBar } from '@/componentFunctions/navBar'
+import { HeroSection } from '@/componentFunctions/heroSection'
+import { Main } from 'next/document'
 
 export default function Home() {
   return (
-    <NavBar/>
+    <div className='space-y-10'>
+      <NavBar/>
+      <HeroSection/>
+    </div>
+    
   )
 }
