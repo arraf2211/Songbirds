@@ -9,14 +9,14 @@ import {
 } from "@/components/ui/card"
 import { Story } from "@/lib/interfaces"
 import Image from "next/image"
-import { useState } from 'react'
 import { Slider } from "../ui/slider2"
-import { Separator } from "../ui/separator"
-import { Badge } from "../ui/badge"
+
 
 import { Tooltip as ReactTooltip } from "react-tooltip"
+import { useRouter } from "next/navigation"
 
 export default function StoryCard({ story }: { story: Story }) {
+  const router = useRouter()
   const slidePercentage = (Number(BigInt(100) * story.currentFunds / story.requiredFunds))
   return (
     <Card className="bg-[#0e0e0e] border border-zinc-800 bg-opacity-50 backdrop-blur-lg text-zinc-700">
@@ -41,12 +41,14 @@ export default function StoryCard({ story }: { story: Story }) {
         {
           story.released
           ? <div
-            className="flex gap-2 p-4 items-center justify-center rounded-md bg-accent2 text-accent2 font-light text-sm border border-accent2 bg-opacity-10 cursor-pointer transition-all duration-300 hover:-translate-y-1" 
+            className="flex gap-2 p-4 items-center justify-center rounded-md bg-accent2 text-accent2 font-light text-sm border border-accent2 bg-opacity-10 cursor-pointer transition-all duration-300 hover:-translate-y-1"
+            onClick={() => router.push(`/story/${story.hash}`)}
             >
               This story has been released publically
             </div>
           : <div 
-              className="flex gap-2 p-4 items-center justify-center rounded-md bg-zinc-200 bg-opacity-10 cursor-pointer transition-all duration-300 hover:-translate-y-1" 
+              className="flex gap-2 p-4 items-center justify-center rounded-md bg-zinc-200 bg-opacity-10 cursor-pointer transition-all duration-300 hover:-translate-y-1"
+              onClick={() => router.push(`/story/${story.hash}`)}
             >
                 <Image src="/icons/lock.svg" width={20} height={20} alt="lock" className=""/>
                 <p className={`text-white font-light text-sm`}>

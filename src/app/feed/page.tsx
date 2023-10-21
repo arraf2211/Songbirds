@@ -1,8 +1,10 @@
+"use client"
 import StoryCard from "@/components/feed/StoryCard"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Story } from "@/lib/interfaces"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export default function StoryFeedPage() {
   const stories: Story[] = [
@@ -57,6 +59,9 @@ export default function StoryFeedPage() {
       likes: 1023
     },
   ]
+
+  const router = useRouter()
+
   return (
     <div className="h-full">
       <div className="flex w-full h-full p-4 justify-center px-14">
@@ -80,7 +85,11 @@ export default function StoryFeedPage() {
               {
                 stories.sort((a, b) => a.likes - b.likes).map(
                   (story, i) => (
-                    <div key={i} className="flex gap-2 w-full justify-between items-center bg-[#0e0e0e] border border-zinc-800 bg-opacity-50 backdrop-blur-lg text-zinc-700 rounded-lg px-2 py-1">
+                    <div 
+                      key={i} 
+                      onClick={() => router.push(`/story/${story.hash}`)}
+                      className="flex gap-2 cursor-pointer w-full justify-between items-center bg-[#0e0e0e] border border-zinc-800 bg-opacity-50 backdrop-blur-lg text-zinc-700 rounded-lg px-2 py-1 transition-all duration-200 hover:scale-95 hover:brightness-150"
+                    >
                       <div className="flex flex-col">  
                         <p className="text-sm text-zinc-600">
                           {story.title}
@@ -102,16 +111,14 @@ export default function StoryFeedPage() {
         </div>
 
         <div className="w-2/3 h-full px-14 py-8 flex flex-col gap-4">
-          <p className="text-xl font-bold text-zinc-50">Feed</p>
+          <p className="text-xl font-bold text-zinc-50">Story Feed</p>
           <div className="grow flex flex-col items-center gap-8 overflow-scroll no-scrollbar">
-           {
-            stories.map((story, i) => (
+           { stories.map((story, i) => (
               <>
                 <StoryCard key={i} story={story}/>
                 {(i !== stories.length - 1) && <Image src="/icons/chain-link.svg" alt="link" width={20} height={20}/>}
               </>
-            ))
-          } 
+            )) } 
           </div>
           
         </div>
