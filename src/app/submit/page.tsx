@@ -195,7 +195,8 @@ export default function ProfileForm() {
           />
 
           <div className="flex justify-end">
-            <Button type="submit">Submit</Button>
+            <Button type="submit" variant="ghost">Submit</Button>
+     
           </div>
         </form>
       </Form>
