@@ -82,7 +82,7 @@ export default function ProfileForm() {
                 name="title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel></FormLabel>
+                    <FormLabel>Title</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Story Title"
@@ -103,7 +103,8 @@ export default function ProfileForm() {
                 name="preview"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel></FormLabel>
+                    
+                    <FormLabel>Preview</FormLabel>
                     <FormControl>
                       <BigInput
                         placeholder="Story preview"
@@ -172,7 +173,7 @@ export default function ProfileForm() {
                 name="detailed"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel></FormLabel>
+                    <FormLabel>Descirption</FormLabel>
                     <FormControl>
                       <BiggerInput
                         placeholder="Your story in more detail"
