@@ -57,7 +57,7 @@ export function NavBar() {
   return (
     
     
-    <NavigationMenu>
+    <NavigationMenu className="space-y-1">
         <CompanyLogo/>
       <NavigationMenuList>
 
