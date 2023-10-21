@@ -7,7 +7,7 @@ export function HeroSection() {
   return (
     <div className="text-center flex  items-center justify-center h-screen">
         
-            <img src="/karimdrip.jpg" className=" h-fit  ml-32 -mr-10  rounded-r-full z-30 object-cover "></img>
+            <img src="/karimdrip.jpg" className=" h-[800px]  ml-32 -mr-10  rounded-r-full z-30 object-cover "></img>
             <div className="items-center justify-center z-40 space-y-16">
                 <h1 className="items-center justify-center font-bold text-9xl -ml-10 z-40">
                     Giving a Voice to the Voiceless
