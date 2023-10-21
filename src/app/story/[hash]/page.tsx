@@ -73,7 +73,7 @@ export default function StoryDetailsPage({ params }: { params: { hash: string } 
         <div className="flex w-full gap-4">
           <p className="text-xs w-[10rem] text-center">Funding Progress {story.currentFunds.toString()} / {story.requiredFunds.toString()}</p>
           <Slider
-            defaultValue={[33]}
+            defaultValue={[slidePercentage]}
             max={100}
             step={1}
             className={"pointer-events-none w-full"}
