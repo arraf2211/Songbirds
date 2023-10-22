@@ -18,7 +18,7 @@ export default function StoryFeedPage() {
       <div className="flex w-full h-full p-4 justify-center px-14">
         
         <div className="w-1/3 h-full py-5 px-2 flex flex-col gap-8">
-          <p className="text-3xl">OurApp</p>
+          <p className="text-3xl">Songbirds</p>
           <p className="text-xl italic text-zinc-300">Uphold honesty and integrity by spreading truth in the fight against misinformation</p>
 
           <Card className="bg-[#0e0e0e] border border-zinc-800 bg-opacity-50 backdrop-blur-lg text-zinc-700">

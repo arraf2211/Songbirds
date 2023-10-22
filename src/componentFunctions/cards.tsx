@@ -65,7 +65,7 @@ export function Cards() {
             </Link>
         </Card>
 
-      <Card className="w-[350px] h-[310px] ml-5 bg-white">
+      {/* <Card className="w-[350px] h-[310px] ml-5 bg-white">
         <CardHeader>
           <CardTitle>Build Your Reputation</CardTitle>
           <CardDescription className="pt-4">
@@ -76,7 +76,7 @@ export function Cards() {
         <CardFooter className="flex justify-center">
           <Button>Grow Reputation</Button>
         </CardFooter>
-      </Card>
+      </Card> */}
     </div>
   );
 }

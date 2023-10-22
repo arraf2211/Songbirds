@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import { Story } from "./interfaces";
 
 import { StacksMocknet, StacksTestnet } from "@stacks/network";
-import { stringUtf8CV, intCV, uintCV, hexToCV, bufferCV, ListCV, ClarityValue, StringUtf8CV, cvToHex, ClarityType  } from "@stacks/transactions";
+import { stringUtf8CV, intCV, uintCV, hexToCV, bufferCV, ListCV, ClarityValue, StringUtf8CV, cvToHex, ClarityType } from "@stacks/transactions";
 import axios, { HttpStatusCode } from "axios";
 
 const contractAddress = "ST547VD9N1PRY9DHE9QBW7BFMAXK56AX36T48X3S"
@@ -28,16 +28,16 @@ export const WalletContext = createContext<WalletContext>({
   isConnected: false,
   txLoading: false,
   stories: [],
-  connectWallet: () => {},
-  disconnectWallet: () => {},
+  connectWallet: () => { },
+  disconnectWallet: () => { },
   getStory: async () => null,
-  postMessage: () => {},
-  fund: () => {},
-  like: () => {},
+  postMessage: () => { },
+  fund: () => { },
+  like: () => { },
 })
 
 export const appDetails = {
-  name: "OurApp",
+  name: "Songbird",
   icon: "https://freesvg.org/img/1541103084.png",
 };
 
@@ -83,7 +83,7 @@ export function useWalletContext(): WalletContext {
     const storyRaw = (hexToCV(res.data.result) as any).value.data
 
     console.log(storyRaw)
-    
+
     const story: Story = {
       title: name,
       hash: new TextDecoder().decode(storyRaw["hash"].buffer),

@@ -13,7 +13,7 @@ export function HeroSection() {
                         Songbirds
                         
                 </h1>
-                <h1 className="items-center justify-center font-bold text-9xl -ml-10 z-40  text-accent1  ">
+                <h1 className="items-center italic justify-center font-bold text-9xl -ml-10 z-40  text-accent1  ">
                     Giving a Voice to the Voiceless
                     
                 </h1>
