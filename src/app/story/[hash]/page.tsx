@@ -3,21 +3,24 @@ import { Story } from "@/lib/interfaces"
 import { Slider } from "@/components/ui/slider2"
 import Image from "next/image"
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import Link from "next/link"
+import {
+  AppConfig,
+  UserSession,
+  showConnect,
+  openContractCall,
+} from "@stacks/connect";
+import { StacksMocknet, StacksTestnet } from "@stacks/network";
+import { stringUtf8CV } from "@stacks/transactions";
+import FundButton from "@/components/FundButton"
+import { WalletContext } from "@/lib/useWalletContext"
+
 
 export default function StoryDetailsPage({ params }: { params: { hash: string } }) {
-  const router = useRouter()
-  const story: Story = {
-    title: "CEO does crime",
-    description: "Well known corrupt CEO has commited a serious crime. This is the second time in a row he has done some really bad things. For real we need to put this guy in a box where he cant keep doing more bad things!",
-    owner: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-    released: false,
-    hash: "f0fda58630310a6dd91a7d8f0a4ceda2",
-    currentFunds: BigInt(10000),
-    requiredFunds: BigInt(200000),
-    likes: 1023
-  }
+  const { stories } = useContext(WalletContext)
+
+  const story: Story = stories.find(v => v.hash === params.hash)!
 
   const slidePercentage = (Number(BigInt(100) * story.currentFunds / story.requiredFunds))
 
@@ -54,6 +57,9 @@ export default function StoryDetailsPage({ params }: { params: { hash: string } 
               <div className="absolute rounded-xl flex flex-col gap-2 items-center justify-center border-zinc-400 border w-full h-full left-0 top-0 bg-zinc-400 bg-opacity-25 backdrop-blur-sm">
                 <Image src="/icons/lock.svg" height={30} width={30} alt="lock"/>
                 <p className="text-zinc-200 text-sm font-light">Fund this story so it can be released publicly</p>
+                <div className="text-black">
+                  <FundButton/>
+                </div>
               </div>
           }
           { !story.released &&

@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import {
     Card,
     CardContent,
@@ -65,7 +65,18 @@ export function Cards() {
             </Link>
         </Card>
 
+      <Card className="w-[350px] h-[310px] ml-5 bg-white">
+        <CardHeader>
+          <CardTitle>Build Your Reputation</CardTitle>
+          <CardDescription className="pt-4">
+          Build a strong reputation by consistently sharing accurate and valuable data. A higher reputation allows you to price your content higher, gain more rewards. Become a respected contributor!
+          </CardDescription>
+        </CardHeader>
+        <CardContent></CardContent>
+        <CardFooter className="flex justify-center">
+          <Button>Grow Reputation</Button>
+        </CardFooter>
+      </Card>
     </div>
-
-    )
-  }
+  );
+}

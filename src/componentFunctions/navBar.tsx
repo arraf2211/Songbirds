@@ -62,7 +62,7 @@ export function NavBar() {
       <NavigationMenuList>
 
       <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
+          <Link href="/feed" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Home 
             </NavigationMenuLink>

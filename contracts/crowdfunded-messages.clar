@@ -16,6 +16,7 @@
 (define-constant err-invalid-message-hash (err u107))
 (define-constant err-cant-fund-your-own-message (err u108))
 (define-constant err-not-enough-funding (err u109))
+(define-constant err-insufficient-funds (err u110))
 
 (define-map messages-map { title: (string-utf8 50) } { owner: principal, required-funds: uint, current-funds: uint, start-block-height: uint, hash: (buff 32), likes: (list 100 principal), revealed: bool, content: (optional (string-utf8 500)) })
 (define-data-var message-titles (list 100 (string-utf8 50)) (list ))
@@ -25,6 +26,8 @@
 (define-public (post-message (title (string-utf8 50)) (required-funds uint) (hash (buff 32)))
     (begin 
     (asserts! (is-eq true (map-insert messages-map { title: title } { owner: tx-sender, required-funds: required-funds, current-funds: u0, start-block-height: block-height, hash: hash, likes: (list ), revealed: false, content: none })) err-message-with-this-title-already-exists)
+    (asserts! (>= (stx-get-balance tx-sender) u1000000) err-insufficient-funds) ;; 1 STX
+    (unwrap-panic (stx-transfer? u1000000 tx-sender (as-contract tx-sender)))
     (var-set message-titles (unwrap-panic (as-max-len? (append (var-get message-titles) title) u100))) ;; max_len (u100) should be set as same size as max_len for options-names
     (ok true)
     )
@@ -45,6 +48,8 @@
           (ok false)
         )
         (begin
+          (asserts! (>= (stx-get-balance tx-sender) u10000) err-insufficient-funds) ;; 0.01 STX
+          (unwrap-panic (stx-transfer? u10000 tx-sender (as-contract tx-sender)))
           (map-set messages-map { title: title } (merge (unwrap-panic message) { likes: (unwrap-panic (as-max-len? (append (get likes (unwrap-panic message)) tx-sender) u100)) }))
           (ok true)
         )
@@ -89,11 +94,14 @@
       (
         (message (map-get? messages-map { title: title } ))
         (derived-hash (sha256 (unwrap-panic (to-consensus-buff? content))))
+        (sender tx-sender)
       ) 
       (asserts! (is-eq (some tx-sender) (get owner message)) err-message-owner-only)
       (asserts! (>= (unwrap-panic (get current-funds message)) (unwrap-panic (get required-funds message))) err-not-enough-funding)
       (asserts! (is-eq derived-hash (unwrap-panic (get hash message))) err-invalid-message-hash)
       (map-set messages-map { title: title } (merge (unwrap-panic message) { content: (some content), revealed: true }))
+      (asserts! (>= (stx-get-balance (as-contract tx-sender)) u950000) err-insufficient-funds) ;; 0.95 STX
+      (unwrap-panic (as-contract (stx-transfer? u950000 (as-contract tx-sender) sender)))
       (ok true)
     )
 )
@@ -104,6 +112,8 @@
         (message (map-get? messages-map { title: title } ))
       )
       ;; (asserts! (not (is-eq (some tx-sender) (get owner message))) err-cant-fund-your-own-message)
+      (asserts! (>= (stx-get-balance tx-sender) amount) err-insufficient-funds) ;; 1 STX
+      (unwrap-panic (stx-transfer? amount tx-sender (as-contract tx-sender)))
       (ok (map-set messages-map { title: title } (merge (unwrap-panic message) { current-funds: (+ amount (unwrap-panic (get current-funds message))) })))
     )
 )
