@@ -17,8 +17,9 @@ import { NavBar } from '@/componentFunctions/navBar'
 import { HeroSection } from '@/componentFunctions/heroSection'
 import { Main } from 'next/document'
 import { Cards } from '@/componentFunctions/cards'
-import { Parallax } from 'react-scroll-parallax';
-import { ParallaxBanner } from 'react-scroll-parallax';
+import { TableData } from '@/componentFunctions/tableOfData'
+import { Parallax } from 'react-scroll-parallax'
+
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <NavBar/>
       <HeroSection/>
       <Cards/>
+      
     </div>
     
   )

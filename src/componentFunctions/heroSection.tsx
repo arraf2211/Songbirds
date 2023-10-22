@@ -7,9 +7,13 @@ export function HeroSection() {
   return (
     <div className="text-center flex  items-center justify-center h-screen">
         
-            <img src="/karimdrip.jpg" className=" h-[800px]  ml-32 -mr-10  rounded-r-full z-30 object-cover "></img>
+            <img src="/justice.jpg" className=" h-[800px] w-[600px] -mr-10  rounded-r-full z-30 object-scale-down "></img>
             <div className="items-center justify-center z-40 space-y-16">
                 <h1 className="items-center justify-center font-bold text-9xl -ml-10 z-40">
+                        Songbirds
+                        
+                </h1>
+                <h1 className="items-center justify-center font-bold text-9xl -ml-10 z-40  text-accent1  ">
                     Giving a Voice to the Voiceless
                     
                 </h1>

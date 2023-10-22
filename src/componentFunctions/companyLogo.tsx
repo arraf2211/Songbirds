@@ -7,7 +7,7 @@ import {
   export function CompanyLogo() {
     return (
       <Avatar>
-        <AvatarImage src="../../../karimdrip.jpg" alt="@shadcn" />
+        <AvatarImage src="../../../justice.jpg" alt="@shadcn" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
     )
