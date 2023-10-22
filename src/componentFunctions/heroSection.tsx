@@ -10,7 +10,7 @@ export function HeroSection() {
             <img src="/justice.jpg" className=" h-[800px] w-[600px] -mr-10  rounded-r-full z-30 object-scale-down "></img>
             <div className="items-center justify-center z-40 space-y-16">
                 <h1 className="items-center justify-center font-bold text-9xl -ml-10 z-40">
-                        L.A.C.K
+                        Songbirds
                         
                 </h1>
                 <h1 className="items-center justify-center font-bold text-9xl -ml-10 z-40  text-accent1  ">

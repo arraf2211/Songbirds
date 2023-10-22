@@ -62,15 +62,23 @@ export function NavBar() {
       <NavigationMenuList>
 
       <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Trending 
+              Home 
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+
+      <NavigationMenuItem>
+          <Link href="/feed" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Feed 
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/submit" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Post 
             </NavigationMenuLink>

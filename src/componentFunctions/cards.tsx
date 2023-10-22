@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 
 
@@ -25,9 +26,12 @@ export function Cards() {
             <CardContent>
             
             </CardContent>
-            <CardFooter className="flex justify-center">
-            <Button className="">View</Button>
-            </CardFooter>
+            <Link href="/feed" legacyBehavior passHref>
+                <CardFooter className="flex justify-center">
+                <Button className="">Feed</Button>
+                </CardFooter>
+            </Link>
+            
         </Card>
 
         <Card className="w-[350px] h-[250px]  ml-10 shadow-accent1 shadow-xl">
@@ -38,9 +42,11 @@ export function Cards() {
             <CardContent>
             
             </CardContent>
-            <CardFooter className="flex justify-center">
-            <Button>Post</Button>
-            </CardFooter>
+            <Link href="/submit" legacyBehavior passHref>
+                <CardFooter className="flex justify-center">
+                <Button className="">Post</Button>
+                </CardFooter>
+            </Link>
         </Card>
 
         <Card className="w-[350px] h-[250px]  ml-10 shadow-accent1 shadow-xl">
@@ -52,9 +58,11 @@ export function Cards() {
             <CardContent>
             
             </CardContent>
-            <CardFooter className="flex justify-center ">
-            <Button>Deploy</Button>
-            </CardFooter>
+            <Link href="/feed" legacyBehavior passHref>
+                <CardFooter className="flex justify-center">
+                <Button className="">View</Button>
+                </CardFooter>
+            </Link>
         </Card>
 
     </div>
