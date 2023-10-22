@@ -70,7 +70,7 @@ export function NavBar() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/feed" legacyBehavior passHref>
+          <Link href="/submit" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Post 
             </NavigationMenuLink>
