@@ -37,7 +37,7 @@ export function Cards() {
         <Card className="w-[350px] h-[250px]  ml-10 shadow-accent1 shadow-xl">
             <CardHeader className="h-[150px]">
             <CardTitle>Speak your Truth</CardTitle>
-            <CardDescription>Create a new Post for others to view</CardDescription>
+            <CardDescription> Be a storyteller and share your knowledge, stories, and data with the world while preserving your anonymity through blockchain.</CardDescription>
             </CardHeader>
             <CardContent>
             
@@ -51,16 +51,15 @@ export function Cards() {
 
         <Card className="w-[350px] h-[250px]  ml-10 shadow-accent1 shadow-xl">
             <CardHeader className="h-[150px]">
-            <CardTitle>View </CardTitle>
-            <CardDescription>Whether you're a data enthusiast, a curious mind, or a decision-maker, 
-                our trending data section is your window to real-time knowledge. </CardDescription>
+            <CardTitle>Build Your Reputation </CardTitle>
+            <CardDescription>Cultivate a strong reputation by consistently sharing accurate and valuable content while maintaining your privacy.</CardDescription>
             </CardHeader>
             <CardContent>
             
             </CardContent>
             <Link href="/feed" legacyBehavior passHref>
                 <CardFooter className="flex justify-center">
-                <Button className="">View</Button>
+                <Button className="">Build</Button>
                 </CardFooter>
             </Link>
         </Card>
