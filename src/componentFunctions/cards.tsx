@@ -10,14 +10,14 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { Parallax } from 'react-scroll-parallax';
+
 
 
 
 export function Cards() {
     return (
-    <div className="space-x-5 flex flex-row items-center justify-center h-[600px]">
-        <Card className="w-[350px] h-[250px] ml-5 bg-white ">
+    <div className="space-x-10 flex flex-row items-center justify-center h-[600px]">
+        <Card className="w-[350px] h-[250px] ml-10 bg-white shadow-accent1 shadow-xl">
             <CardHeader>
             <CardTitle> Trending Information </CardTitle>
             <CardDescription>Discover the insights that matter most and gain a fresh perspective on what's happening around the world. </CardDescription>
@@ -30,7 +30,7 @@ export function Cards() {
             </CardFooter>
         </Card>
 
-        <Card className="w-[350px] h-[250px]  ml-5">
+        <Card className="w-[350px] h-[250px]  ml-10 shadow-accent1 shadow-xl">
             <CardHeader className="h-[150px]">
             <CardTitle>Speak your Truth</CardTitle>
             <CardDescription>Create a new Post for others to view</CardDescription>
@@ -43,7 +43,7 @@ export function Cards() {
             </CardFooter>
         </Card>
 
-        <Card className="w-[350px] h-[250px]  ml-5">
+        <Card className="w-[350px] h-[250px]  ml-10 shadow-accent1 shadow-xl">
             <CardHeader className="h-[150px]">
             <CardTitle>View Something</CardTitle>
             <CardDescription>Whether you're a data enthusiast, a curious mind, or a decision-maker, 

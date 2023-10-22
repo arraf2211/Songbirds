@@ -1,0 +1,32 @@
+Oct 22 09:42:19.687 INFO Checking contracts
+Oct 22 09:42:19.738 INFO Starting Devnet
+Oct 22 09:42:19.765 INFO Initiating Devnet boot sequence (working_dir: C:\Users\arraf\portfolio-website\lack-stacks-hack\.\.cache\stacks-devnet-1697967739)
+Oct 22 09:42:19.779 INFO Creating network ..devnet
+Oct 22 09:42:19.793 INFO Starting bitcoin-node
+Oct 22 09:42:27.830 INFO Created container bitcoin-node: 471ef7f988cd9313ea9a9e6ed1084c000ed9a9454536d33556c6acc8c7b318a1
+Oct 22 09:42:29.336 INFO Configuring bitcoin-node
+Oct 22 09:42:30.109 ERRO Ok("{\"result\":null,\"error\":{\"code\":-28,\"message\":\"Loading block index…\"},\"id\":\"stacks-network\"}\n")
+Oct 22 09:42:31.121 INFO Waiting for bitcoin-node
+Oct 22 09:42:31.163 ERRO Ok("{\"result\":null,\"error\":{\"code\":-28,\"message\":\"Loading block index…\"},\"id\":\"stacks-network\"}\n")
+Oct 22 09:42:32.177 INFO Waiting for bitcoin-node
+Oct 22 09:42:33.218 INFO Registering addr(n3GRiDLKWuKLCw1DZmV75W1mE35qmW2tQm)#dm832d0a
+Oct 22 09:42:33.271 INFO Registering addr(mjSrB3wS4xab3kYqFktwBzfTdPg367ZJ2d)#kdxvqwc5
+Oct 22 09:42:33.322 INFO Registering addr(mqVnk6NPRdhntvfm4hh9vvjiRkFDUuSYsH)#ypxkdrsq
+Oct 22 09:42:33.371 INFO Registering addr(mjSrB3wS4xab3kYqFktwBzfTdPg367ZJ2d)#kdxvqwc5
+Oct 22 09:42:33.422 INFO Registering addr(mr1iPkD9N3RJZZxXRk7xF9d36gffa6exNC)#n3uhsuqz
+Oct 22 09:42:33.468 INFO Registering addr(muYdXKmX9bByAueDe6KFfHd5Ff1gdN9ErG)#0ayck9fm
+Oct 22 09:42:33.514 INFO Registering addr(mvZtbibDAAA3WLpY7zXXFqRa3T4XSknBX7)#hkf7ujwt
+Oct 22 09:42:33.563 INFO Registering addr(mg1C76bNTutiCDV3t9nWhZs3Dc8LzUufj8)#gtqjph77
+Oct 22 09:42:33.615 INFO Registering addr(mweN5WVqadScHdA81aATSdcVr4B6dNokqx)#qz3ysrq0
+Oct 22 09:42:33.662 INFO Registering addr(mzxXgV6e4BZSsz8zVHm3TmqbECt7mbuErt)#pnqz0pm8
+Oct 22 09:42:33.707 INFO Registering addr(n37mwmru2oaVosgfuvzBwgV2ysCQRrLko7)#lh2paj0q
+Oct 22 09:42:33.757 INFO Registering addr(n2v875jbJ4RjBnTjgbfikDfnwsDV5iUByw)#8606llct
+Oct 22 09:42:33.802 INFO Starting postgres
+Oct 22 09:43:37.439 INFO Created container postgres: 46fd185889a7be1f6da7bbbf30945e7a8154c5c2cf1e3546b16d4fd805bd092b
+Oct 22 09:43:40.652 INFO Starting stacks-api
+Oct 22 09:52:46.482 INFO Terminating bitcoin-node
+Oct 22 09:54:46.486 INFO Terminating postgres
+Oct 22 09:56:46.489 INFO Pruning network and containers
+Oct 22 09:58:48.018 INFO Artifacts (logs, conf, chainstates) available here: C:\Users\arraf\portfolio-website\lack-stacks-hack\.\.cache\stacks-devnet-1697967739
+Oct 22 09:58:48.018 INFO ⚠️  fatal error - unable to create container: Timeout error
+Oct 22 09:58:48.040 INFO Handling Termination command
