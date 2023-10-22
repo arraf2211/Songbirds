@@ -51,7 +51,7 @@ export function Cards() {
 
         <Card className="w-[350px] h-[250px]  ml-10 shadow-accent1 shadow-xl">
             <CardHeader className="h-[150px]">
-            <CardTitle>View Something</CardTitle>
+            <CardTitle>View </CardTitle>
             <CardDescription>Whether you're a data enthusiast, a curious mind, or a decision-maker, 
                 our trending data section is your window to real-time knowledge. </CardDescription>
             </CardHeader>
