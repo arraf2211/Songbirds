@@ -15,12 +15,17 @@ import { StacksMocknet, StacksTestnet } from "@stacks/network";
 import { stringUtf8CV } from "@stacks/transactions";
 import FundButton from "@/components/FundButton"
 import { WalletContext } from "@/lib/useWalletContext"
+import PromoteButton from "@/components/PromoteButton"
 
 
 export default function StoryDetailsPage({ params }: { params: { hash: string } }) {
   const { stories } = useContext(WalletContext)
 
-  const story: Story = stories.find(v => v.hash === params.hash)!
+  const story: Story | undefined = stories.find(v => v.hash === params.hash)
+
+  if (!story) {
+    return <div/>
+  }
 
   const slidePercentage = (Number(BigInt(100) * story.currentFunds / story.requiredFunds))
 
@@ -58,7 +63,7 @@ export default function StoryDetailsPage({ params }: { params: { hash: string } 
                 <Image src="/icons/lock.svg" height={30} width={30} alt="lock"/>
                 <p className="text-zinc-200 text-sm font-light">Fund this story so it can be released publicly</p>
                 <div className="text-black">
-                  <FundButton/>
+                  <FundButton story={story}/>
                 </div>
               </div>
           }
@@ -85,7 +90,10 @@ export default function StoryDetailsPage({ params }: { params: { hash: string } 
             className={"pointer-events-none w-full"}
           />
         </div>
-        <Link href="/feed" className="text-center">Return to feed</Link>
+        <div className="flex gap-4 w-full justify-center items-center">
+          <PromoteButton story={story}/>
+          <Link href="/feed" className="text-center">Return to feed</Link>
+        </div>
       </div>
     </div>
   )

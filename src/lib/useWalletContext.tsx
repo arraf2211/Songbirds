@@ -1,9 +1,9 @@
-import { AppConfig, UserSession, openContractCall, showConnect } from "@stacks/connect";
+import { AppConfig, ContractCallOptions, UserSession, openContractCall, showConnect } from "@stacks/connect";
 import { createContext, useEffect, useState } from "react";
 import { Story } from "./interfaces";
 
 import { StacksMocknet, StacksTestnet } from "@stacks/network";
-import { stringUtf8CV, hexToCV, ListCV, ClarityValue, StringUtf8CV, cvToHex, ClarityType  } from "@stacks/transactions";
+import { stringUtf8CV, intCV, uintCV, hexToCV, bufferCV, ListCV, ClarityValue, StringUtf8CV, cvToHex, ClarityType  } from "@stacks/transactions";
 import axios, { HttpStatusCode } from "axios";
 
 const contractAddress = "ST547VD9N1PRY9DHE9QBW7BFMAXK56AX36T48X3S"
@@ -13,19 +13,27 @@ const sender = `${contractAddress}.${contractName}`
 interface WalletContext {
   isLoading: boolean;
   isConnected: boolean;
+  txLoading: boolean;
+  stories: Story[];
   connectWallet: () => void;
   disconnectWallet: () => void;
   getStory: (name: string) => Promise<Story | null>;
-  stories: Story[]
+  postMessage: (title: string, requiredFunds: number, hash: Uint8Array) => void;
+  fund: (story: Story, amount: number) => void;
+  like: (story: Story) => void;
 }
 
 export const WalletContext = createContext<WalletContext>({
   isLoading: false,
   isConnected: false,
+  txLoading: false,
+  stories: [],
   connectWallet: () => {},
   disconnectWallet: () => {},
   getStory: async () => null,
-  stories: []
+  postMessage: () => {},
+  fund: () => {},
+  like: () => {},
 })
 
 export const appDetails = {
@@ -43,6 +51,7 @@ export const stacksAxios = axios.create({
 
 export function useWalletContext(): WalletContext {
   const [isLoading, setLoading] = useState(false)
+  const [txLoading, setTxLoading] = useState(false)
   const [isConnected, setConnected] = useState(false)
   const [stories, setStories] = useState<Story[]>([])
 
@@ -72,6 +81,8 @@ export function useWalletContext(): WalletContext {
     }
 
     const storyRaw = (hexToCV(res.data.result) as any).value.data
+
+    console.log(storyRaw)
     
     const story: Story = {
       title: name,
@@ -106,6 +117,57 @@ export function useWalletContext(): WalletContext {
     setStories(allStories.filter(v => v != null) as Story[])
   }
 
+  async function fund(story: Story, amount: number) {
+    setTxLoading(true)
+
+    const options: ContractCallOptions = {
+      contractAddress,
+      contractName,
+      functionName: "fund-message",
+      functionArgs: [(stringUtf8CV(story.title)), uintCV(amount)],
+      onFinish: (payload) => {
+        console.log(`Tx = ${payload.txId}`)
+        setTxLoading(false)
+      }
+    }
+
+    await openContractCall(options)
+  }
+
+  async function postMessage(title: string, requiredFunds: number, hash: Uint8Array) {
+    setTxLoading(true)
+
+    const options: ContractCallOptions = {
+      contractAddress,
+      contractName,
+      functionName: "post-message",
+      functionArgs: [(stringUtf8CV(title)), (uintCV(requiredFunds)), (bufferCV(hash))],
+      onFinish: (payload) => {
+        console.log(`Tx = ${payload.txId}`)
+        setTxLoading(false)
+      }
+    }
+
+    await openContractCall(options)
+  }
+
+  async function like(story: Story) {
+    setTxLoading(true)
+
+    const options: ContractCallOptions = {
+      contractAddress,
+      contractName,
+      functionName: "like-message",
+      functionArgs: [(stringUtf8CV(story.title)),],
+      onFinish: (payload) => {
+        console.log(`Tx = ${payload.txId}`)
+        setTxLoading(false)
+      }
+    }
+
+    await openContractCall(options)
+  }
+
   useEffect(() => {
     loadStories()
     setConnected(
@@ -116,9 +178,13 @@ export function useWalletContext(): WalletContext {
   return {
     stories,
     isLoading,
+    txLoading,
     isConnected,
     connectWallet,
     disconnectWallet,
-    getStory
+    getStory,
+    postMessage,
+    fund,
+    like
   }
 }

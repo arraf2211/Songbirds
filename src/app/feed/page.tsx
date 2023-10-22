@@ -26,7 +26,7 @@ export default function StoryFeedPage() {
               <p className="text-zinc-600">
                 Contribute to our cause by anonomously posting the truth, share your voice using our platform
               </p>
-              <Button variant="ghost">Publish</Button>
+              <Button variant="ghost" onClick={() => router.push("/submit")}>Publish</Button>
             </CardContent>
           </Card>
 
@@ -61,7 +61,7 @@ export default function StoryFeedPage() {
 
         </div>
 
-        <div className="w-2/3 h-full px-14 py-8 flex flex-col gap-4">
+        <div className="w-2/3 h-full px-24 py-8 flex flex-col gap-4">
           <p className="text-xl font-bold text-zinc-50">Story Feed</p>
           <div className="grow flex flex-col items-center gap-8 overflow-scroll no-scrollbar">
            { stories.map((story, i) => (
