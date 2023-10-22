@@ -19,7 +19,7 @@ export default function StoryCard({ story }: { story: Story }) {
   const router = useRouter()
   const slidePercentage = (Number(BigInt(100) * story.currentFunds / story.requiredFunds))
   return (
-    <Card className="bg-[#0e0e0e] border border-zinc-800 bg-opacity-50 backdrop-blur-lg text-zinc-700">
+    <Card className="bg-[#0e0e0e] w-full border border-zinc-800 bg-opacity-50 backdrop-blur-lg text-zinc-700">
       <CardHeader>
         <CardTitle className="text-zinc-50">{story.title}</CardTitle>
         <CardDescription className="text-zinc-500 text-sm">

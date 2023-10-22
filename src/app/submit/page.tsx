@@ -3,10 +3,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import React from "react";
+import React, { useContext } from "react";
 
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+
+import { hashSha256Sync } from "@stacks/encryption"
 
 import {
   Form,
@@ -21,6 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { BigInput } from "@/components/ui/biginput";
 import { BiggerInput } from "@/components/ui/biggerinput";
+import { WalletContext } from "@/lib/useWalletContext";
 
 const formSchema = z.object({
   title: z.string().min(1, {
@@ -62,16 +65,21 @@ export default function ProfileForm() {
     },
   });
 
+  const { postMessage } = useContext(WalletContext)
+
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    
+
+    postMessage(values.title, parseInt(values.price as string),  hashSha256Sync(new TextEncoder().encode(values.detailed)))
   }
 
   return (
     <div className="p-10 h-full overflow-hidden">
-  <hr style={{ color: "", backgroundColor: "grey", height: 1 }} />
+  {/* <hr style={{ color: "", backgroundColor: "grey", height: 1 }} /> */}
   <div className="flex justify-center h-full py-10 overflow-x-hidden overflow-y-auto ">
     <div className="flex-1 pr-10">
       <h1 className="text-2xl font-semibold mb-4">Submit Your Story</h1>
@@ -143,7 +151,7 @@ export default function ProfileForm() {
           />
 
           {/* Evidence Upload */}
-          <FormField
+          {/* <FormField
             control={form.control}
             name="evidence"
             render={({ field }) => (
@@ -159,7 +167,7 @@ export default function ProfileForm() {
                 </FormDescription>
               </FormItem>
             )}
-          />
+          /> */}
         </form>
       </Form>
     </div>
@@ -196,7 +204,6 @@ export default function ProfileForm() {
 
           <div className="flex justify-end">
             <Button type="submit" variant="ghost">Submit</Button>
-     
           </div>
         </form>
       </Form>
