@@ -62,7 +62,7 @@ export function NavBar() {
       <NavigationMenuList>
 
       <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/feed" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Trending 
             </NavigationMenuLink>
@@ -70,7 +70,7 @@ export function NavBar() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/feed" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Post 
             </NavigationMenuLink>

@@ -17,7 +17,7 @@ export default function RootLayout({
     <WalletContext.Provider value={context}>
       <html lang="en" className='h-full w-full'>
         <body className={`${inter.className} h-full w-full`}>
-          <div className="absolute top-0 right-0 p-4">
+          <div className="absolute top-0 right-0 p-4 z-[200]">
             <ConnectButton/>
           </div>
             <div className='h-full w-full bg-black text-white'>
